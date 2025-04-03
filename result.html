@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Your Quiz Result</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f7ff;
+      margin: 0;
+      padding: 40px;
+      text-align: center;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background-color: #ffffff;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    h1 {
+      color: #6b54b6;
+    }
+    p {
+      font-size: 18px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 id="result-title">Your Result</h1>
+    <p id="result-desc">We're identifying your introvert type...</p>
+  </div>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const type = params.get('type');
+
+    const results = {
+      hidden: {
+        title: "🌱 The Hidden Gem",
+        desc: "You’re quiet and thoughtful. You see things others miss and have strengths people don’t always notice right away — but they’re powerful."
+      },
+      thinker: {
+        title: "🧘 The Grounded Thinker",
+        desc: "You stay calm, even when things get crazy. You think things through, stay steady, and others trust your peaceful vibe."
+      },
+      leader: {
+        title: "🦉 The Quiet Leader",
+        desc: "You don’t need to be loud to lead. People respect you because of how you listen, stay focused, and lead by example."
+      },
+      visionary: {
+        title: "🌟 The Powerful Visionary",
+        desc: "You have big ideas and a strong sense of purpose. You’re built to do amazing things — and you inspire others with your quiet strength."
+      }
+    };
+
+    if (results[type]) {
+      document.getElementById("result-title").textContent = results[type].title;
+      document.getElementById("result-desc").textContent = results[type].desc;
+    } else {
+      document.getElementById("result-title").textContent = "Oops!";
+      document.getElementById("result-desc").textContent = "Something went wrong. Please try again from the quiz page.";
+    }
+  </script>
+</body>
+</html>
